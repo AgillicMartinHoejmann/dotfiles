@@ -8,8 +8,12 @@ call plug#end()
 
 colorscheme nord
 
-nnoremap [oh :set hlsearch<CR>
 nnoremap ]oh :set nohlsearch<CR>
+nnoremap [oh :set hlsearch<CR>
+
+nnoremap ]b :bnext<CR>
+nnoremap [b :bprevious<CR>
+
 nnoremap S :%s///g<left><left>
 
 let g:python3_host_prog='/usr/local/Cellar/python@3.9/3.9.0/bin/python3.9'
