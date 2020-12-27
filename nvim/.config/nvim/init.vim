@@ -8,6 +8,7 @@ call plug#end()
 
 colorscheme nord
 
+set hidden
 set nohlsearch
 set undofile
 
