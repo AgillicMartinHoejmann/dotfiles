@@ -5,26 +5,44 @@ Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
+" Colors
 colorscheme nord
 
+" Options
 set hidden
 set nohlsearch
+set completeopt=menuone,noinsert,noselect
 set undofile
+set splitbelow
+set splitright
+
+" Mappings
+let mapleader = ','
 
 nnoremap ]oh :set nohlsearch<CR>
 nnoremap [oh :set hlsearch<CR>
-
 nnoremap ]b :bnext<CR>
 nnoremap [b :bprevious<CR>
-
+nnoremap ]q :cnext<CR>
+nnoremap [q :cprev<CR>
 nnoremap S :%s///g<left><left>
 
-let g:python3_host_prog='/usr/local/bin/python3.9'
+nnoremap <Leader>ff <cmd>Telescope find_files<CR>
+nnoremap <Leader>fg <cmd>Telescope live_grep<CR>
+nnoremap <Leader>fb <cmd>Telescope buffers<CR>
+nnoremap <Leader>fh <cmd>Telescope help_tags<CR>
+nnoremap <Leader>fq <cmd>Telescope quickfix<CR>
 
-let g:UltiSnipsListSnippets='<c-l>'
+" Plugins
+let g:python3_host_prog = '/usr/local/bin/python3.9'
+let g:UltiSnipsListSnippets = '<c-l>'
 
 lua << EOF
 require'nvim-treesitter.configs'.setup {
@@ -48,14 +66,8 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 lua << EOF
-require'lspconfig'.tsserver.setup{}
-EOF
-
-lua << EOF
 local lspconfig = require'lspconfig'
-lspconfig.cssls.setup{
-	root_dir = lspconfig.util.root_pattern('.git');
-}
+lspconfig.tsserver.setup{}
 EOF
 
 lua << EOF
@@ -108,8 +120,10 @@ end
 
 -- Use a loop to conveniently both setup defined servers 
 -- and map buffer local keybindings when the language server attaches
-local servers = { "pyright", "rust_analyzer", "tsserver" }
+local servers = { "tsserver" }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup { on_attach = on_attach }
 end
 EOF
+
+autocmd BufEnter * lua require'completion'.on_attach()
