@@ -1,0 +1,5 @@
+vim.api.nvim_set_keymap('n', '<Leader>oh', ':set hlsearch!<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', ']b', ':bnext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[b', ':bprevious<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', ']q', ':cnext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[q', ':cprevious<CR>', { noremap = true, silent = true })
