@@ -1,1 +1,5 @@
-nvim/.local/share/nvim/*
+nvim/.local/share/nvim/shada/main.shada
+nvim/.local/share/nvim/swap
+nvim/.local/share/nvim/undo
+nvim/.local/share/nvim/site
+
