@@ -1,3 +1,4 @@
+require('mh.colors')
 require('mh.mappings')
 require('mh.plugins')
 require('mh.treesitter')

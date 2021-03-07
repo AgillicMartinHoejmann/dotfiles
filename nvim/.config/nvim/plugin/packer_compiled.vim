@@ -32,6 +32,14 @@ local function try_loadstring(s, component, name)
 end
 
 _G.packer_plugins = {
+  ["colorbuddy.nvim"] = {
+    loaded = true,
+    path = "/Users/mh/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim"
+  },
+  ["gruvbuddy.nvim"] = {
+    loaded = true,
+    path = "/Users/mh/.local/share/nvim/site/pack/packer/start/gruvbuddy.nvim"
+  },
   ["nvim-compe"] = {
     loaded = true,
     path = "/Users/mh/.local/share/nvim/site/pack/packer/start/nvim-compe"
@@ -59,6 +67,10 @@ _G.packer_plugins = {
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/mh/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+  },
+  ["vim-sandwich"] = {
+    loaded = true,
+    path = "/Users/mh/.local/share/nvim/site/pack/packer/start/vim-sandwich"
   }
 }
 
